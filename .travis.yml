@@ -14,3 +14,9 @@ after_success:
   - docker build -t avinashnehra/multi-nginx ./nginx
   - docker build -t avinashnehra/multi-server ./server
   - docker build -t avinashnehra/multi-worker ./worker
+  # Login to the DOcker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push avinashnehra/multi-client
+  - docker push avinashnehra/multi-nginx
+  - docker push avinashnehra/multi-server
+  - docker push avinashnehra/multi-worker
